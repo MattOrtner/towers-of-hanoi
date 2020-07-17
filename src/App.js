@@ -14,24 +14,22 @@ function App() {
       if (firstSelection === undefined) {
         firstSelection = index
         event.currentTarget.classList.add('selected')
-        
-      } else { 
+
+      } else {
+
         if (towersOfHanoi.move(firstSelection, index)) {
           setBoard([...towersOfHanoi.board])
-          //
-          //finish removing class stuff
-          //
-          event.currentTarget.classList.remove('selected')
           
           if (towersOfHanoi.checkWin()) {
             setWin(true)
           }
         }
         firstSelection = undefined
+        event.currentTarget.classList.remove('selected')
         
       }
-    } 
-    
+    }
+
   }
   const restart = () => {
     setWin(false)

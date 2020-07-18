@@ -7,9 +7,6 @@ class TowersOfHanoi {
     ]
   } 
   
-  getBoard() {
-    return [...this.board]
-  }
 
   move(from, to) {
     const fromStack = this.board[from]
@@ -31,12 +28,13 @@ class TowersOfHanoi {
     }
   }
   
-  restart() {
-    this.board = [
-      [1, 2, 3],
-      [],
-      [],
-    ]
+  restart(numRings = 3) {
+    const newArray = []
+    for (let i = 1; i <= numRings; i += 1) {
+      newArray.push(i)
+    }
+
+    this.board = [newArray, [], []]
   }
 }
 

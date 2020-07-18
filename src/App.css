@@ -26,12 +26,20 @@
   background-color: white;
   border-bottom: 5px solid tomato;
   cursor: pointer;
+  position: relative;
 }
 
+.tower .pole {
+  height: 50%;
+  width: 5px;
+  background-color: burlywood;
+  position: absolute;
+}
 
 
 .ring {
   height: 20px;
+  z-index: 1;
 }
 
 .tower.selected :first-child {

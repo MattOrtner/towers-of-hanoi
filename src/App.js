@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './App.css';
 import TowersOfHanoi from './towers-of-hanoi'
 
@@ -7,54 +7,43 @@ const towersOfHanoi = new TowersOfHanoi()
 const firstSelection = {}
 
 function App() {
+  const slider = useRef()
   const [board, setBoard] = useState([...towersOfHanoi.board])
   const [isWin, setWin] = useState(false)
   const [counter, setCounter] = useState(0)
 
 
-
-  const selectTower = (index) => {
+  const selectTower = (towerIndex) => {
     return (event) => {
       if (firstSelection.index === undefined) {
-        firstSelection.index = index
+        firstSelection.index = towerIndex
         firstSelection.element = event.currentTarget
         firstSelection.element.classList.add('selected')
 
       } else {
 
-        if (towersOfHanoi.move(firstSelection.index, index)) {
+        if (towersOfHanoi.move(firstSelection.index, towerIndex)) {
           setBoard([...towersOfHanoi.board])
-          firstSelection.element.classList.remove('selected')
           setCounter(counter + 1)
           if (towersOfHanoi.checkWin()) {
             setWin(true)
           }
-        }
+        } 
         firstSelection.index = undefined
+        firstSelection.element.classList.remove('selected')
       }
     }
   }
 
-  const createNumRings = (event) => {
-    const ringsSelected = event.currentTarget.value
+  
+  const restart = () => {
+    const ringsSelected = slider.current.value
     const numRings = parseInt(ringsSelected)
 
-    
-    const newArray = []
-    for (let i = 1; i <= numRings; i += 1) {
-      newArray.push(i)
-    }
-    
-    towersOfHanoi.board = [newArray, [], []]
-    setBoard([...towersOfHanoi.board])
-    
-  }
-    
-    const restart = () => {
-      
     setWin(false)
     setCounter(0)
-    towersOfHanoi.restart()
+
+    towersOfHanoi.restart(numRings)
     setBoard([...towersOfHanoi.board])
   }
 
@@ -83,6 +72,7 @@ function App() {
           className={`tower ${sequence}`}
         >
           {renderRings(tower)}
+          <div className='pole'></div>
         </div>
       )
     })
@@ -91,15 +81,14 @@ function App() {
   return (
     <div className="App">
       <h1 className='title'>Towers Of Hanoi</h1>
-      {!isWin && 
-      <h1 className='counter'>Number of moves: {counter}</h1>
-      }
-      {isWin &&
+      {!isWin ?
+        <h1 className='counter'>Number of moves: {counter}</h1> 
+        :
         <h1>YOU DID IT!      In {counter} moves!</h1>
       }
       <div>
         <label> Number of rings
-          <input onChange={createNumRings} type='range' min='3' max='7' defaultValue='3' step='1'></input>
+          <input onChange={restart} ref={slider} type='range' min='3' max='7' defaultValue='3' step='1'></input>
         </label>
       </div>
       <div className='border'>
@@ -113,8 +102,5 @@ function App() {
 
 export default App;
 /**
- * fix winning towers number on instance of win function
  * adding posts for each tower to live on
- * have the restart function reset the whole-
- * board w/ correct number of rings
  */

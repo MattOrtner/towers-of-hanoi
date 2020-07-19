@@ -60,14 +60,9 @@ function App() {
 
   const renderTowers = () => {
     return board.map((tower, i) => {
-      let sequence
-      if (i === 0) {
-        sequence = 'left'
-      } else if (i === 1) {
-        sequence = 'center'
-      } else {
-        sequence = 'right'
-      }
+      
+      const sequence = ['left', 'center', 'right'][i]
+      
       return (
         <div
           key={sequence}

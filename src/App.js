@@ -81,6 +81,7 @@ function App() {
   return (
     <div className="App">
       <h1 className='title'>Towers Of Hanoi</h1>
+      <p>Move the stack of rings to a new tower. Larger rings can't be placed on smaller rings</p>
       {!isWin ?
         <h1 className='counter'>Number of moves: {counter}</h1> 
         :

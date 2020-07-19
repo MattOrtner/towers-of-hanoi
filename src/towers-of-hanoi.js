@@ -18,8 +18,10 @@ class TowersOfHanoi {
       return false
     } else if (fromStack[0] > toStack[0]) {
       return false
+
     }
     
+
     
     const ring = fromStack.shift()
     toStack.unshift(ring)

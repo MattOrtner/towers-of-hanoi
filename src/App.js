@@ -17,6 +17,7 @@ function App() {
 
     return (event) => {
       if (firstSelection.index === undefined) {
+        if (towersOfHanoi.board[towerIndex].length === 0) return
         firstSelection.index = towerIndex
         firstSelection.element = event.currentTarget
         firstSelection.element.classList.add('selected')
@@ -44,6 +45,7 @@ function App() {
     setWin(false)
     setCounter(0)
     firstSelection.element.classList.remove('selected')
+    delete firstSelection.index 
     towersOfHanoi.numRings = numRings
     towersOfHanoi.restart(numRings)
     setBoard([...towersOfHanoi.board])
@@ -104,10 +106,5 @@ function App() {
 }
 
 export default App;
-/**
- * prevent user from picking up pole if no rings are present
- *remember you can use === on anything, not just numbers and strings. 
- *You can compare reference to elements and see if it's the same too fyi
- * 
- * favicon redo
- */
+
+

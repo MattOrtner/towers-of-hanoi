@@ -5,6 +5,7 @@ class TowersOfHanoi {
       [],
       [],
     ]
+    this.numRings = 3
   } 
   
 
@@ -15,7 +16,9 @@ class TowersOfHanoi {
       return false
     } else if (fromStack[0] > toStack[0]) {
       return false
-    } 
+    } else if (fromStack[0] === toStack[0]) {
+      return false
+    }
     
     const ring = fromStack.shift()
     toStack.unshift(ring)
@@ -23,7 +26,7 @@ class TowersOfHanoi {
   }
 
   checkWin() {
-    if (this.board[1].length === 3 || this.board[2].length === 3) {
+    if (this.board[1].length === this.numRings || this.board[2].length === this.numRings) {
       return true
     }
   }

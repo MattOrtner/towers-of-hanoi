@@ -14,6 +14,7 @@ function App() {
 
 
   const selectTower = (towerIndex) => {
+
     return (event) => {
       if (firstSelection.index === undefined) {
         firstSelection.index = towerIndex
@@ -22,27 +23,28 @@ function App() {
 
       } else {
 
+
         if (towersOfHanoi.move(firstSelection.index, towerIndex)) {
           setBoard([...towersOfHanoi.board])
           setCounter(counter + 1)
           if (towersOfHanoi.checkWin()) {
             setWin(true)
           }
-        } 
+        }
         firstSelection.index = undefined
         firstSelection.element.classList.remove('selected')
       }
     }
   }
 
-  
   const restart = () => {
     const ringsSelected = slider.current.value
     const numRings = parseInt(ringsSelected)
-    
+
     setWin(false)
     setCounter(0)
-
+    firstSelection.element.classList.remove('selected')
+    towersOfHanoi.numRings = numRings
     towersOfHanoi.restart(numRings)
     setBoard([...towersOfHanoi.board])
   }
@@ -76,14 +78,14 @@ function App() {
         </div>
       )
     })
-  }
+  } 
 
   return (
     <div className="App">
       <h1 className='title'>Towers Of Hanoi</h1>
       <p>Move the stack of rings to a new tower. Larger rings can't be placed on smaller rings</p>
       {!isWin ?
-        <h1 className='counter'>Number of moves: {counter}</h1> 
+        <h1 className='counter'>Number of moves: {counter}</h1>
         :
         <h1>YOU DID IT!      In {counter} moves!</h1>
       }
@@ -103,12 +105,9 @@ function App() {
 
 export default App;
 /**
- * checkWin() should work with any number of rings
  * prevent user from picking up pole if no rings are present
- * picking up ring and putting it down, shouldn't count as a move
- * if you make a first selection then hit restart the first ring is still selected
+ *remember you can use === on anything, not just numbers and strings. 
+ *You can compare reference to elements and see if it's the same too fyi
  * 
- * 
- * write simple directions for the user if they've never played the game
  * favicon redo
  */

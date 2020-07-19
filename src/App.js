@@ -39,7 +39,7 @@ function App() {
   const restart = () => {
     const ringsSelected = slider.current.value
     const numRings = parseInt(ringsSelected)
-
+    
     setWin(false)
     setCounter(0)
 
@@ -95,12 +95,19 @@ function App() {
         {renderTowers()}
       </div>
       <br />
-      <button className='restartButton' onClick={restart}>Restart?</button>
+      <button className='restartButton' onClick={restart}>Restart</button>
     </div>
   );
 }
 
 export default App;
 /**
- * adding posts for each tower to live on
+ * checkWin() should work with any number of rings
+ * prevent user from picking up pole if no rings are present
+ * picking up ring and putting it down, shouldn't count as a move
+ * if you make a first selection then hit restart the first ring is still selected
+ * 
+ * 
+ * write simple directions for the user if they've never played the game
+ * favicon redo
  */

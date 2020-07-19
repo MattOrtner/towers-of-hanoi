@@ -11,7 +11,7 @@ class TowersOfHanoi {
 
   move(from, to) {
     if (from === to) return 
-    
+
     const fromStack = this.board[from]
     const toStack = this.board[to]
     if (fromStack.length === 0) {
@@ -41,6 +41,7 @@ class TowersOfHanoi {
     }
 
     this.board = [newArray, [], []]
+    this.numRings = numRings
   }
 }
 

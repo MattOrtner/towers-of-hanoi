@@ -46,7 +46,6 @@ function App() {
     setCounter(0)
     firstSelection.element.classList.remove('selected')
     delete firstSelection.index 
-    towersOfHanoi.numRings = numRings
     towersOfHanoi.restart(numRings)
     setBoard([...towersOfHanoi.board])
   }

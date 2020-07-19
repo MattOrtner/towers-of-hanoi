@@ -10,15 +10,16 @@ class TowersOfHanoi {
   
 
   move(from, to) {
+    if (from === to) return 
+    
     const fromStack = this.board[from]
     const toStack = this.board[to]
     if (fromStack.length === 0) {
       return false
     } else if (fromStack[0] > toStack[0]) {
       return false
-    } else if (fromStack[0] === toStack[0]) {
-      return false
     }
+    
     
     const ring = fromStack.shift()
     toStack.unshift(ring)

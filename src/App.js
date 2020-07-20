@@ -39,28 +39,34 @@ function App() {
   }
 
   const restart = () => {
+    
     const ringsSelected = slider.current.value
     const numRings = parseInt(ringsSelected)
-
+    
+    
     setWin(false)
     setCounter(0)
-    firstSelection.element.classList.remove('selected')
+
     delete firstSelection.index 
     towersOfHanoi.restart(numRings)
     setBoard([...towersOfHanoi.board])
+    
+    if (firstSelection.element) {
+      firstSelection.element.classList.remove('selected')
+    } 
   }
-
+  
   const renderRings = (tower) => {
     return tower.map((ringSize) => {
       return (
         <div key={ringSize} className={`ring size-${ringSize}`}></div>
-      )
-    })
-  }
-
-  const renderTowers = () => {
-    return board.map((tower, i) => {
-      
+        )
+      })
+    }
+    
+    const renderTowers = () => {
+      return board.map((tower, i) => {
+        
       const sequence = ['left', 'center', 'right'][i]
       
       return (

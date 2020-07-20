@@ -39,18 +39,14 @@ function App() {
   }
 
   const restart = () => {
-
     const ringsSelected = slider.current.value
     const numRings = parseInt(ringsSelected)
-
-
     setWin(false)
     setCounter(0)
 
     delete firstSelection.index
     towersOfHanoi.restart(numRings)
     setBoard([...towersOfHanoi.board])
-
     if (firstSelection.element) {
       firstSelection.element.classList.remove('selected')
     }
@@ -66,7 +62,6 @@ function App() {
 
   const renderTowers = () => {
     return board.map((tower, i) => {
-
       const sequence = ['left', 'center', 'right'][i]
 
       return (

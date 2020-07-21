@@ -86,10 +86,11 @@ function App() {
         :
         <h1>YOU DID IT!      In {counter} moves!</h1>
       }
-      <div>
-        <label> Number of rings
+      <label> Number of rings </label>
+      <div className='sliderNest'>
+          <div className='sliderBeg'>3</div>
           <input onChange={restart} ref={slider} type='range' min='3' max='7' defaultValue='3' step='1'></input>
-        </label>
+          <div className='sliderEnd'>7</div>
       </div>
       <div className='border'>
         {renderTowers()}

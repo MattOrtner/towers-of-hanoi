@@ -95,3 +95,20 @@
 .title {
   font-size: 75px;
 }
+
+.sliderNest {
+  display: flex;
+  flex-direction: row;
+}
+
+.sliderBeg {
+  color: red;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.sliderEnd {
+  color: violet;
+  font-size: 25px;
+  font-weight: bold;
+}

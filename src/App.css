@@ -30,7 +30,7 @@
 }
 
 .tower .pole {
-  height: 50%;
+  height: 65%;
   width: 5px;
   background-color: burlywood;
   position: absolute;
@@ -40,6 +40,8 @@
 .ring {
   height: 20px;
   z-index: 1;
+  border-radius: 25%;
+  border: solid darkred;
 }
 
 .tower.selected :first-child {
